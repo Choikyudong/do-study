@@ -6,12 +6,12 @@ package pack;
  * Date : 2022-09-07
  * Time : 오후 11:09
  */
-public class Day3 {
+public class Soluction3 {
 
 	public static void main(String[] args) {
-		Day3.TwiceAsOld(30,0);
-		Day3.TwiceAsOld(30,7);
-		Day3.TwiceAsOld(45,30);
+		System.out.println(TwiceAsOld(30,0));
+		System.out.println(TwiceAsOld(30,7));
+		System.out.println(TwiceAsOld(45,30));
 	}
 
 	/**

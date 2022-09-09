@@ -6,13 +6,13 @@ package pack;
  * Date : 2022-09-06
  * Time : 오후 10:32
  */
-public class Day2 {
+public class Soluction2 {
 
 	public static void main(String[] args) {
-		Day2.grow(new int[]{1});
-		Day2.grow(new int[]{1,2,3});
-		Day2.grow(new int[]{4,1,1,1,4});
-		Day2.grow(new int[]{2,2,2,2,2,2});
+		System.out.println(grow(new int[]{1}));
+		System.out.println(grow(new int[]{1,2,3}));
+		System.out.println(grow(new int[]{4,1,1,1,4}));
+		System.out.println(grow(new int[]{2,2,2,2,2,2}));
 	}
 
 	/**

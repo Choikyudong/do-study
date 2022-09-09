@@ -1,21 +1,17 @@
 package pack;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 /**
  * Question : ReverseWords
  * Writer : Kyudong
  * Date : 2022-09-09
  * Time : 오전 12:55
  */
-public class Day4 {
+public class Soluction4 {
 
 	public static void main(String[] args) {
-		Day4.reverseWords("I like eating");
-		Day4.reverseWords("I like flying");
-		Day4.reverseWords("The world is nice");
+		System.out.println(reverseWords("I like eating"));
+		System.out.println(reverseWords("I like flying"));
+		System.out.println(reverseWords("The world is nice"));
 	}
 
 	/**

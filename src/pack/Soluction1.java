@@ -1,18 +1,20 @@
 package pack;
 
+import java.sql.SQLOutput;
+
 /**
  * Question : Grasshopper - Check for factor
  * Writer : Kyudong
  * Date : 2022-09-05
  * Time : 오후 10:50
  */
-public class Day1 {
+public class Soluction1 {
 
 	public static void main(String[] args) {
-		Day1.checkForFactor(10, 2);
-		Day1.checkForFactor(63, 7);
-		Day1.checkForFactor(2450, 5);
-		Day1.checkForFactor(24612, 3);
+		System.out.println(checkForFactor(10, 2));
+		System.out.println(checkForFactor(63, 7));
+		System.out.println(checkForFactor(2450, 5));
+		System.out.println(checkForFactor(24612, 3));
 	}
 
 	/**
