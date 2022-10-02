@@ -1,7 +1,5 @@
 package pack;
 
-import java.sql.SQLOutput;
-
 /**
  * Question : Grasshopper - Check for factor
  * Writer : Kyudong
