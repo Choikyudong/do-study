@@ -3,7 +3,7 @@ package pack2;
 import java.util.Arrays;
 
 /**
- * Question :
+ * Question : Highest and Lowest
  * Writer : Kyudong
  * Date : 2022-10-05
  * Time : 오후 10:13
