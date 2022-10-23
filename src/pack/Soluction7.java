@@ -1,5 +1,6 @@
 package pack;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
@@ -11,10 +12,10 @@ import java.util.stream.IntStream;
 public class Soluction7 {
 
 	public static void main(String[] args) {
-		System.out.println(Soluction7.countBy(1, 10));
-		System.out.println(Soluction7.countBy(2, 5));
-		System.out.println(Soluction7.countBy(3, 7));
-		System.out.println(Soluction7.countBy(100, 6));
+		System.out.println(Arrays.toString(Soluction7.countBy(1, 10)));
+		System.out.println(Arrays.toString(Soluction7.countBy(2, 5)));
+		System.out.println(Arrays.toString(Soluction7.countBy(3, 7)));
+		System.out.println(Arrays.toString(Soluction7.countBy(100, 6)));
 	}
 
 	/**
