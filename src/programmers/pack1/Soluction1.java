@@ -8,14 +8,13 @@ import java.util.*;
  * Date : 2023-01-14
  * Time : 오후 5:05
  */
-public class Solucion1 {
+public class Soluction1 {
 
 	public static void main(String[] args) {
 		System.out.println(Arrays.toString(solution(new int[]{1,1,3,3,0,1,1})));
 		System.out.println(Arrays.toString(solution(new int[]{4,4,4,3,3})));
 	}
 
-	// 스택으로 풀어봄
 	public static int[] solution(int []arr) {
 		Stack<Integer> stack = new Stack<>();
 
