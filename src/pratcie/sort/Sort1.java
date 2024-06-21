@@ -12,11 +12,12 @@ public class Sort1 {
 		new Thread(() -> bubbleSort1(Arrays.copyOf(orginArr, orginArr.length))).start();
 		new Thread(() -> bubbleSort2(Arrays.copyOf(orginArr, orginArr.length))).start();
 		new Thread(() -> bubbleSort3(Arrays.copyOf(orginArr, orginArr.length))).start();
+		new Thread(() -> bubbleSort4(Arrays.copyOf(orginArr, orginArr.length))).start();
 		new Thread(() -> cocktailSort(Arrays.copyOf(orginArr, orginArr.length))).start();
 	}
 
 	public static int[] makeRandomArray() {
-		int length = 100;
+		int length = 100000;
 		int[] array = new int[length];
 		for (int i = 0; i < length; i++) {
 			array[i] = (random.nextInt(100) * random.nextInt(1000));
@@ -75,6 +76,20 @@ public class Sort1 {
 			k = last;
 		}
 		System.out.println("bubbleSort3 소요시간 : " + (System.nanoTime() - start));
+	}
+
+	public static void bubbleSort4(int[] array) {
+		long start = System.nanoTime();
+		for (int i = 0; i < array.length - 1; i++) {
+			for (int j = array.length - 1 - i; j > i; j--) { // 정렬이 완료된 범위를 제외시킴
+				if (array[j - 1] > array[j]) {
+					int temp = array[j - 1];
+					array[j - 1] = array[j];
+					array[j] = temp;
+				}
+			}
+		}
+		System.out.println("bubbleSort4 소요시간 : " + (System.nanoTime() - start));
 	}
 
 	// 버블정렬의 개선 버전, 양방향 버블 정렬 또는 셰이커 정렬이라고도 부름
