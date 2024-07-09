@@ -12,13 +12,15 @@ public class Sort2 {
 		new Thread(() -> selectionSort(Arrays.copyOf(orginArr, orginArr.length))).start();
 		new Thread(() -> insertionSort(Arrays.copyOf(orginArr, orginArr.length))).start();
 		new Thread(() -> binaryInsertionSort(Arrays.copyOf(orginArr, orginArr.length))).start();
+		new Thread(() -> shellSort1(Arrays.copyOf(orginArr, orginArr.length))).start();
+		new Thread(() -> shellSort2(Arrays.copyOf(orginArr, orginArr.length))).start();
 	}
 
 	public static int[] makeRandomArray() {
-		int length = 10;
+		int length = 1000000;
 		int[] array = new int[length];
 		for (int i = 0; i < length; i++) {
-			array[i] = (random.nextInt(10) * random.nextInt(10));
+			array[i] = (random.nextInt(1000) * random.nextInt(1000));
 		}
 		return array;
 	}
@@ -83,6 +85,40 @@ public class Sort2 {
 			array[searchInsert] = key;
 		}
 		System.out.println("binaryInsertionSort 소요시간 : " + (System.nanoTime() - start));
+	}
+
+	public static void shellSort1(int[] array) {
+		long start = System.nanoTime();
+		int length = array.length;
+		for (int h = length / 2; h > 0; h /= 2) { // h = 정렬할 그룹의 수를 의미하며, h-정렬이라고도 부른다.
+			for (int i = h; i < length; i++) { // 나누어진 그룹에서 정렬을 시작한다.
+				int j; // 인덱스
+				int temp = array[i];
+				for (j = i - h; j >= 0 && array[j] > temp ; j -= h) { // 삽입 정렬 시작
+					array[j + h] = array[j];
+				}
+				array[j + h] = temp;
+			}
+		}
+		System.out.println("shellSort1 소요시간 : " + (System.nanoTime() - start));
+	}
+
+	public static void shellSort2(int[] array) {
+		long start = System.nanoTime();
+		int length = array.length;
+		int h;
+		for (h = 1; h < length / 9 ; h = h * 3 + 1); // 3의 배수로 그룹을 구해버린다.
+		for (; h > 0; h /= 3) {
+			for (int i = h; i < length; i++) {
+				int j;
+				int temp = array[i];
+				for (j = i - h; j >= 0 && array[j] > temp ; j -= h) {
+					array[j + h] = array[j];
+				}
+				array[j + h] = temp;
+			}
+		}
+		System.out.println("shellSort2 소요시간 : " + (System.nanoTime() - start));
 	}
 
 }
