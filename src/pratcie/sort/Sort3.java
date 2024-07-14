@@ -21,12 +21,19 @@ public class Sort3 {
 			int[] bArray = new int[]{1, 2, 3, 4, 9, 16, 21};
 			int[] cArray = new int[13];
 			mergeArray(aArray, aArray.length, bArray, bArray.length, cArray);
-			System.out.printf("mergeSort1 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(cArray));
+			System.out.printf("mergeArray 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(cArray));
+		}).start();
+		new Thread(() -> {
+			long start = System.nanoTime();
+			int[] array = Arrays.copyOf(orginArr, orginArr.length);
+			mergeArray = new int[array.length]; // 작업용 배열 생성
+			mergeSort(array, 0, array.length - 1);
+			System.out.printf("mergeSort 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(array));
 		}).start();
 	}
 
 	public static int[] makeRandomArray() {
-		int length = 10;
+		int length = 100;
 		int[] array = new int[length];
 		for (int i = 0; i < length; i++) {
 			array[i] = (random.nextInt(10) * random.nextInt(10));
@@ -77,4 +84,29 @@ public class Sort3 {
 		}
 	}
 
+	static int[] mergeArray;
+
+	public static void mergeSort(int[] array, int left, int right) {
+		if (left < right) {
+			int i;
+			int center = (left + right) / 2;
+			int p = 0;
+			int j = 0;
+			int k = left;
+
+			mergeSort(array, left, center); // 앞부분 병합 정럴
+			mergeSort(array, center + 1, right); // 뒷부분 병합 정럴
+
+			// 병합 수행 코드
+			for (i = left; i <= center; i++) {
+				mergeArray[p++] = array[i];
+			}
+			while (i <= right && j < p) {
+				array[k++] = (mergeArray[j] <= array[i]) ? mergeArray[j++] : array[i++];
+			}
+			while (j < p) {
+				array[k++] = mergeArray[j++];
+			}
+		}
+	}
 }
