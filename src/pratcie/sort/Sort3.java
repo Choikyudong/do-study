@@ -88,16 +88,16 @@ public class Sort3 {
 
 	public static void mergeSort(int[] array, int left, int right) {
 		if (left < right) {
-			int i;
 			int center = (left + right) / 2;
-			int p = 0;
-			int j = 0;
 			int k = left;
 
 			mergeSort(array, left, center); // 앞부분 병합 정럴
 			mergeSort(array, center + 1, right); // 뒷부분 병합 정럴
 
 			// 병합 수행 코드
+			int i;
+			int j = 0;
+			int p = 0;
 			for (i = left; i <= center; i++) {
 				mergeArray[p++] = array[i];
 			}
