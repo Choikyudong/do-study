@@ -30,6 +30,12 @@ public class Sort3 {
 			mergeSort(array, 0, array.length - 1);
 			System.out.printf("mergeSort 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(array));
 		}).start();
+		new Thread(() -> {
+			long start = System.nanoTime();
+			int[] array = Arrays.copyOf(orginArr, orginArr.length);
+			heapSort(array);
+			System.out.printf("heapSort 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(array));
+		}).start();
 	}
 
 	public static int[] makeRandomArray() {
@@ -107,6 +113,37 @@ public class Sort3 {
 			while (j < p) {
 				array[k++] = mergeArray[j++];
 			}
+		}
+	}
+
+	public static void downHeap(int[] array, int left, int right) {
+		int temp = array[left]; // 루트
+		int child; // 큰 값을 가진 노드
+		int parent;
+
+		for (parent = left; parent < (right + 1) / 2; parent = child) {
+			int cl = parent * 2 + 1;
+			int cr = cl + 1;
+			child = (cr <= right && array[cr] > array[cl]) ? cr : cl;
+			if (temp >= array[child]) {
+				break;
+			}
+			array[parent] = array[child];
+		}
+		array[parent] = temp;
+	}
+
+	public static void heapSort(int[] array) {
+		int length = array.length;
+		for (int i = (length - 1) / 2; i >= 0; i--) {
+			downHeap(array, i, length - 1);
+		}
+
+		for (int i = (length - 1); i > 0; i--) {
+			int temp = array[0];
+			array[0] = array[i];
+			array[i] = temp;
+			downHeap(array, 0, i - 1);
 		}
 	}
 }
