@@ -36,6 +36,12 @@ public class Sort3 {
 			heapSort(array);
 			System.out.printf("heapSort 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(array));
 		}).start();
+		new Thread(() -> {
+			long start = System.nanoTime();
+			int[] array = Arrays.copyOf(orginArr, orginArr.length);
+			countingSort(array);
+			System.out.printf("countingSort 소요시간 : %d, 배열 : %s%n", (System.nanoTime() - start), Arrays.toString(array));
+		}).start();
 	}
 
 	public static int[] makeRandomArray() {
@@ -144,6 +150,39 @@ public class Sort3 {
 			array[0] = array[i];
 			array[i] = temp;
 			downHeap(array, 0, i - 1);
+		}
+	}
+
+	public static void countingSort(int[] array) {
+		int length = array.length;
+		
+		// 배열의 최대값 구하기
+		int max = array[0];
+		for (int i = 1; i < array.length; i++) {
+			max = Math.max(max, array[i]);
+		}
+		
+		int[] f = new int[max + 1]; // 도수분포와 누적도수를 넣는 배열
+		int[] b = new int[length]; // 임시저장용
+
+		// 도수 분포표 만들기
+		for (int i = 0; i < length; i++) {
+			f[array[i]]++;
+		}
+		
+		// 누적 도수 분포표 만들기
+		for (int i = 1; i <= max; i++) {
+			f[i] += f[i - 1];
+		}
+		
+		// 목적 배열 만들기
+		for (int i = length - 1; i >= 0; i--) {
+			b[--f[array[i]]] = array[i];
+		}
+		
+		// 배열 복사 
+		for (int i = 0; i < length; i++) {
+			array[i] = b[i];
 		}
 	}
 }
