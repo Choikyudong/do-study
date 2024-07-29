@@ -5,6 +5,7 @@ public class StringSearch {
 	public static void main(String[] args) {
 		bruteForce("ABABCDEFGHAA", "ABC");
 		kmp("ABABCDEFGHAA", "ABC");
+		boyerMoore("AABCXDEZCABACABAC", "ABAC");
 	}
 
 	static void bruteForce(String text, String pattern) {
@@ -65,6 +66,41 @@ public class StringSearch {
 
 		// 결과
 		int result = pp == pattern.length() ? pt - pp : -1;
+		if (result == -1) {
+			System.out.println("패턴이 없음");
+		} else {
+			System.out.println(result + "번째 문자부터 일치");
+		}
+	}
+
+	static void boyerMoore(String text, String pattern) {
+		int pt;
+		int pp;
+		int textLength = text.length();
+		int patternLength = pattern.length();
+		int[] skip = new int[Character.MAX_VALUE + 1];
+
+		for (pt = 0; pt <= Character.MAX_VALUE; pt++) {
+			skip[pt] = patternLength;
+		}
+		for (pt = 0; pt < patternLength - 1; pt++) {
+			skip[pattern.charAt(pt)] = patternLength - pt - 1;
+		}
+
+		int result = -1;
+		outer: while (pt < textLength) {
+			pp = patternLength - 1;
+			while (text.charAt(pt) == pattern.charAt(pp)) {
+				if (pp == 0) {
+					result = pt;
+					break outer;
+				}
+				pp--;
+				pt--;
+			}
+			pt += Math.max(skip[text.charAt(pt)], patternLength - pp);
+		}
+		
 		if (result == -1) {
 			System.out.println("패턴이 없음");
 		} else {
