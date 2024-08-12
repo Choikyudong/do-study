@@ -12,11 +12,9 @@ public class Soluction17 {
 
 		int n = Integer.parseInt(br.readLine());
 		int result = 0;
-		int count = 0;
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		while (st.hasMoreTokens()) {
 			int num = Integer.parseInt(st.nextToken());
-			++count;
 			if (num == 2 || num == 3 || num == 5 || num == 7) {
 				++result;
 				continue;
@@ -24,13 +22,8 @@ public class Soluction17 {
 
 			boolean isPrime = true;
 			for (int i = 2; i < num; i++) {
-				for (int j = 1; j < num; j++) {
-					if (i * j == num) {
-						isPrime = false;
-						break;
-					}
-				}
-				if (!isPrime) {
+				if  (num % i == 0) {
+					isPrime = false;
 					break;
 				}
 			}
