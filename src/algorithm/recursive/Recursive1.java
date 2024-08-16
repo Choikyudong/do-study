@@ -1,4 +1,4 @@
-package pratcie.recursive;
+package algorithm.recursive;
 
 import java.util.Stack;
 

@@ -1,6 +1,6 @@
-package pratcie.search;
+package algorithm.search;
 
-import pratcie.sort.Sort3;
+import algorithm.sort.Sort3;
 
 import java.util.Arrays;
 

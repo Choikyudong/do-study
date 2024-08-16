@@ -1,4 +1,4 @@
-package pratcie.strsearch;
+package algorithm.strsearch;
 
 public class StringSearch {
 
