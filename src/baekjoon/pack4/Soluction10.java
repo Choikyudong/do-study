@@ -14,9 +14,10 @@ public class Soluction10 {
 		for (int i = 0; i < commandLines; i++) {
 			String input = br.readLine();
 			int addNum = 0;
-			if (input.charAt(0) == 'p' && !input.equals("pop")) {
-				addNum = Integer.parseInt(String.valueOf(input.charAt(5)));
-				input = "push";
+			if (input.startsWith("push")) {
+				st = new StringTokenizer(input, " ");
+				input = st.nextToken();
+				addNum = Integer.parseInt(st.nextToken());
 			}
 			switch (input) {
 				case "push":
