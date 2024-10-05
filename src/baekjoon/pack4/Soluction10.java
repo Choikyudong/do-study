@@ -59,15 +59,18 @@ class Queue {
 	}
 
 	public void push(int num) {
-		if (this.end > this.queue.length) {
+		if (this.end >= this.queue.length) {
 			this.end = 0;
 		}
 		this.queue[this.end++] = num;
 	}
 
 	public int pop() {
+		if (this.isEmpty() == 1) {
+			return -1;
+		}
 		int returnNum = queue[front];
-		if (this.front + 1 > this.queue.length) {
+		if (this.front + 1 >= this.queue.length) {
 			this.front = 0;
 		} else {
 			this.front++;
@@ -86,19 +89,18 @@ class Queue {
 		if (this.isEmpty() == 1) {
 			return -1;
 		}
-		return this.queue[end - 1];
+		return this.end == 0 ? this.queue[this.queue.length - 1] : this.queue[end - 1];
 	}
 
 	public int size() {
 		if (front > end) {
-			return (this.queue.length - this.front) + this.end + 1;
+			return (this.queue.length - this.front) + this.end;
 		} else {
-			return this.end;
+			return this.end - this.front;
 		}
 	}
 
 	public int isEmpty() {
 		return this.size() == 0 ? 1 : 0;
 	}
-
 }
