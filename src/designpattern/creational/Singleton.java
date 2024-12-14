@@ -1,8 +1,11 @@
 package designpattern.creational;
 
+import java.io.*;
+import java.lang.reflect.Constructor;
+
 public class Singleton {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Setting setting1 = Setting.getInstance();
 		Setting setting2 = Setting.getInstance();
 		System.out.println(setting1 == setting2);
@@ -22,6 +25,24 @@ public class Singleton {
 		CheckSetting2 checkSetting2_1 = CheckSetting2.getInstance();
 		CheckSetting2 checkSetting2_2 = CheckSetting2.getInstance();
 		System.out.println(checkSetting2_1 == checkSetting2_2);
+
+		// 리플렉션을 이용하여 싱글톤 부숴보기
+		Constructor<CheckSetting2> constructor = CheckSetting2.class.getDeclaredConstructor();
+		constructor.setAccessible(true);
+		CheckSetting2 checkSetting3 = constructor.newInstance();
+		System.out.println(checkSetting3 == checkSetting2_1);
+
+		// 자바의 직렬화/역직렬화를 통해서도 무효화 가능
+		SeriSetting seriSetting1 = SeriSetting.getInstance();
+		try (ObjectOutput out = new ObjectOutputStream(new FileOutputStream("test.obj"))) {
+			out.writeObject(seriSetting1);
+		}
+
+		SeriSetting seriSetting2;
+		try (ObjectInput in = new ObjectInputStream(new FileInputStream("test.obj"))) {
+			seriSetting2 = (SeriSetting) in.readObject();
+		}
+		System.out.println(seriSetting1 == seriSetting2);
 	}
 
 }
@@ -110,6 +131,28 @@ class CheckSetting2 {
 
 	public static CheckSetting2 getInstance() {
 		return CheckSettingHolder.INSTANCE;
+	}
+
+}
+
+class SeriSetting implements Serializable {
+
+	private static class SeriSettingHolder {
+		private static final SeriSetting INSTANCE = new SeriSetting();
+	}
+
+	private SeriSetting() {
+	}
+
+	public static SeriSetting getInstance() {
+		return SeriSettingHolder.INSTANCE;
+	}
+	
+	// readResolve 메서드는 역직렬화할 떄 재정의할 수 있는 메서드
+	// 해당 메서드를 정의하여 싱글톤을 지킬 수 있다.
+	@Serial
+	protected Object readResolve() {
+		return SeriSettingHolder.INSTANCE;
 	}
 
 }
