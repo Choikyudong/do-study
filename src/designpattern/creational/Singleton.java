@@ -156,3 +156,15 @@ class SeriSetting implements Serializable {
 	}
 
 }
+
+// enum을 통해 싱글톤을 정의한다면 리플렉션으로도 생성할 수 없다.
+// 자바의 enum은 컴파일 시점에 고정된 값을 가지기 떄문이다.
+enum enumSetting {
+
+	INSTANCE;
+	
+	public void method() {
+		// 필요한 메서드를 정의
+	}
+
+}
