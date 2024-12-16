@@ -3,8 +3,8 @@ package designpattern.creational;
 public class FactoryMethod {
 
 	public static void main(String[] args) {
-		Car car1 = new RedCarFactory().makeCar("사람1", "빨강", "구형1");
-		Car car2 = new RedCarFactory().makeCar("사람2", "빠랑", "구형1");
+		Car car1 = new RedCarFactory().validAndMake("사람1", "빨강", "구형1");
+		Car car2 = new BlueCarFactory().validAndMake("사람2", "빠랑", "구형1");
 	}
 }
 
