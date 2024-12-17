@@ -52,7 +52,6 @@ public class Soluction19 {
 		int days = 0;
 		while (!queue.isEmpty()) {
 			int size = queue.size();
-			boolean isEven = false;
 			for (int i = 0; i < size; i++) {
 				int[] cur = queue.poll();
 				int h = cur[0];
@@ -67,7 +66,6 @@ public class Soluction19 {
 							&& tomatoBox[nH][nN][nM] == 0) {
 						tomatoBox[nH][nN][nM] = 1;
 						evenTomato++;
-						isEven = true;
 						queue.offer(new int[]{nH, nN, nM});
 					}
 				}
