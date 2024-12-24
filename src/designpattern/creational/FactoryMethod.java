@@ -62,7 +62,7 @@ class BlueCarFactory implements CarFactory {
 	@Override
 	public Car makeCar(String owerName, String color, String modelNum) {
 		System.out.println("BlueCar 생성완료");
-		Car car = new RedCar();
+		Car car = new BlueCar();
 		car.setOnwerName(toString());
 		car.setColor(color);
 		car.setModelNum(modelNum);
