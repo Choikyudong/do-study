@@ -13,7 +13,6 @@ public class Soluction3 {
 	static int[] arr;
 	static int[] printArr;
 	static boolean[] vistied;
-	static boolean[] vistied2;
 	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,13 +28,12 @@ public class Soluction3 {
 		Arrays.sort(arr);
 		printArr = new int[M];
 		vistied = new boolean[N];
-		vistied2 = new boolean[100_001];
 
-		backTracking(0);
+		backTracking(0, 0);
 		System.out.println(sb);
 	}
 
-	static void backTracking(int depth) {
+	static void backTracking(int depth, int index) {
 		if (depth == M) {
 			for (int i : printArr) {
 				sb.append(i).append(" ");
@@ -44,8 +42,13 @@ public class Soluction3 {
 			return;
 		}
 
-		for (int i = 0; i < N; i++) {
-
+		int before = 0;
+		for (int i = index; i < N; i++) {
+			if (before != arr[i]) {
+				printArr[depth] = arr[i];
+				backTracking(depth + 1, i + 1);
+			}
+			before = arr[i];
 		}
 	}
 
