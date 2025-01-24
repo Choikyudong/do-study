@@ -16,7 +16,6 @@ public class Soluction30 {
 			arr[i] = i;
 		}
 
-		List<Integer> result = new ArrayList<>();
 		int idx = 0;
 		int count = 1;
 		int total = 0;
