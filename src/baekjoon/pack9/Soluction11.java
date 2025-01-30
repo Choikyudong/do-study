@@ -1,0 +1,40 @@
+package baekjoon.pack9;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class Soluction11 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int n = Integer.parseInt(st.nextToken());
+		int k = Integer.parseInt(st.nextToken());
+		int[] arr = new int[n + 1];
+		for (int i = 1; i <= n; i++) {
+			arr[i] = i;
+		}
+
+		int result = 0;
+		int count = 0;
+		int num = 2;
+		while (k > count) {
+			for (int i = num; i <= n; i += num) {
+				if (arr[i] == 0) {
+					continue;
+				}
+				count++;
+				result = arr[i];
+				arr[i] = 0;
+				if (count == k) {
+					break;
+				}
+			}
+			num++;
+		}
+		System.out.println(result);
+	}
+
+}
