@@ -2,6 +2,7 @@ package leetcode.pack1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * <a href="https://leetcode.com/problems/find-if-path-exists-in-graph/description/?source=submission-ac">
@@ -55,6 +56,38 @@ public class Soluction16 {
 		}
 		return false;
 	}
+
+	/* 스택으로 품
+	public static boolean validPath(int n, int[][] edges, int source, int destination) {
+		List<List<Integer>> graph = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			graph.add(new ArrayList<>());
+		}
+
+		for (int[] edge : edges) {
+			graph.get(edge[0]).add(edge[1]);
+			graph.get(edge[1]).add(edge[0]);
+		}
+
+		Stack<Integer> stack = new Stack<>();
+		boolean[] vistied = new boolean[n];
+		stack.push(source);
+		while (!stack.isEmpty()) {
+			int node = stack.pop();
+			if (node == destination) {
+				return true;
+			}
+			if (!vistied[node]) {
+				vistied[node] = true;
+				for (int i = 0; i < graph.get(node).size(); i++) {
+					stack.push(graph.get(node).get(i));
+				}
+			}
+		}
+
+		return false;
+	}
+	*/
 
 }
 
