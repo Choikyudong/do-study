@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <a href="https://leetcode.com/problems/invert-binary-tree/description/?envType=problem-list-v2&envId=depth-first-search">
+ * <a href="https://leetcode.com/problems/binary-tree-paths/description/?envType=problem-list-v2&envId=depth-first-search">
  * 문제링크
  * </a>
  */
