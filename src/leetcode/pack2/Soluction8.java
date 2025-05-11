@@ -1,7 +1,7 @@
 package leetcode.pack2;
 
 /**
- * <a href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/?envType=problem-list-v2&envId=depth-first-search">
+ * <a href="https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/description/?envType=problem-list-v2&envId=depth-first-search">
  * 문제링크
  * </a>
  */
