@@ -16,10 +16,7 @@ public class Soluction2 {
 	}
 
 	public static boolean divisorGame(int n) {
-		int[] dp = new int[n];
-
-
-		return true;
+		return n % 2 == 0;
 	}
 
 }
