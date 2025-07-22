@@ -1,7 +1,7 @@
 package leetcode.pack5;
 
 /**
- * <a href="https://leetcode.com/problems/minimum-operations-to-make-array-sum-divisible-by-k/description/">
+ * <a href="https://leetcode.com/problems/design-parking-system/description/">
  * 문제링크
  * </a>
  */
